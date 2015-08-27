@@ -105,11 +105,10 @@ confusionMatrix(pred1, crossv$classe)
 #accuracy <- sum(pred1 == crossv_test$classe) / length(pred1)
 ```
 
-Based on results, the Random Forest prediction was far better than either the GBM or lsa models. The RF model will be used as the sole prediction model. The confusion matrix created gives an accuracy of 99.6%. This is excellent.
+Based on results, the Random Forest prediction was far better than either the GBM or lsa models. The RF model will be used as the sole prediction model. The confusion matrix created gives an accuracy of 99.6%. 
 
-As a double check the out of sample error was calculated. This model achieved 99.7449 % accuracy on the validation set.
 
-Fine Tuning
+#Fine Tuning
 
 Assess Number of relevant variables
 ```{r,echo=TRUE}
@@ -121,7 +120,7 @@ plot(varImpObj, main = "Importance of Top 40 Variables", top = 40)
 # Top 25 plot
 plot(varImpObj, main = "Importance of Top 25 Variables", top = 25)
 ```
-The Random Forest method worked very well.
+rf method worked good.
 
 The Confusion Matrix achieved 99.6% accuracy. The Out of Sample Error achieved 99.7449 %.
 
@@ -134,16 +133,16 @@ Random forest's built in cross-validation component that gives an unbiased estim
 A Random forest can handle unscaled variables and categorical variables. This is more forgiving with the cleaning of the data.
 
 ```{r,echo=TRUE}
-pml_write_files = function(x){
-n = length(x)
-for(i in 1:n){
-filename = paste0("problem_id_",i,".txt")
-write.table(x[i],file=filename,quote=FALSE,row.names=FALSE,col.names=FALSE)
-}
-}
-x <- testing
+#pml_write_files = function(x){
+#n = length(x)
+#for(i in 1:n){
+#filename = paste0("problem_id_",i,".txt")
+#write.table(x[i],file=filename,quote=FALSE,row.names=FALSE,col.names=FALSE)
+#}
+#}
+#x <- testing
 
-answers <- predict(mod1, newdata=x)
-answers
-pml_write_files(answers)
+#answers <- predict(mod1, newdata=x)
+#answers
+#pml_write_files(answers)
 ```
